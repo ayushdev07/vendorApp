@@ -5,6 +5,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import Spinner from 'react-native-loading-spinner-overlay'
 import images from '../../assets/images'
 import { Appbar } from 'react-native-paper';
+import WalletScreen from "../vendor/WalletScreen";
 
 const TutorialsScreen = ({ navigation }) => {
     const [showList, setShowList] = useState(false);
@@ -47,6 +48,7 @@ const TutorialsScreen = ({ navigation }) => {
                 setChosenCatgeory(json.categorydetails[0].categoryName)
                 showSubcategories(json.categorydetails[0].id)
             })
+        console.log(categoryDetails)
     }
     const saveDetails = async (val) => {
         await AsyncStorage.setItem('userName', val.userName)
@@ -156,29 +158,29 @@ const TutorialsScreen = ({ navigation }) => {
             />
         );
     }
-    return (
 
+    return (
         <ScrollView>
-            {isLoading?
-            <Spinner
-                //visibility of Overlay Loading Spinner
-                visible={isLoading}
-                //Text with the Spinner
-                textContent={'Loading...'}
-                //Text style of the Spinner Text
-                textStyle={{ color: '#FFF', }}
-            />
-            :null}
-            <Appbar.Header style={{backgroundColor:'#5FE3B9'}} >
-                <Appbar.Content title="UniworksDesigns" style={{fontSize:20}} />
+            {isLoading ?
+                <Spinner
+                    //visibility of Overlay Loading Spinner
+                    visible={isLoading}
+                    //Text with the Spinner
+                    textContent={'Loading...'}
+                    //Text style of the Spinner Text
+                    textStyle={{ color: '#FFF', }}
+                />
+                : null}
+            <Appbar.Header style={{ backgroundColor: '#5FE3B9' }} >
+                <Appbar.Content title="UniworksDesigns" style={{ fontSize: 20 }} />
             </Appbar.Header>
 
             <View style={{ flex: 1 }} >
-                <View  />
+                <View />
                 <View style={{ flex: 1, flexDirection: 'row', marginLeft: '10%', marginTop: 10 }} >
                     <View>
                         <Text style={{ color: '#000000', fontSize: 24, fontWeight: 'bold', }} >Welcome, </Text>
-                        <Text style={{ color: '#000000', fontSize: 20, alignSelf: 'center', textAlign: 'center' }} >{vendorPersonal.name}</Text>
+                        {/* <Text style={{ color: '#000000', fontSize: 20, alignSelf: 'center', textAlign: 'center' }} >{vendorPersonal.name}</Text> */}
                     </View>
                 </View>
                 <View style={{ flex: 1 }} >
@@ -224,12 +226,13 @@ const TutorialsScreen = ({ navigation }) => {
                             renderItem={renderTutorials}
                         />
                     </View>
+                    <View>
+                        <WalletScreen />
+                    </View>
                 </View>
             </View>
         </ScrollView>
-
     )
-
 }
 
 

@@ -202,7 +202,8 @@ const UpcomingTaskSupervisorScreen = ({ navigation }) => {
             </View>
           </View >
           <View style={{ alignItems: 'center', marginTop: 50 }} >
-            <TouchableOpacity style={styles.approvedButton} onPress={() => navigation.replace('SuperVisorBottom')} >
+            {/* <TouchableOpacity style={styles.approvedButton} onPress={() => navigation.replace('SuperVisorBottom')} > */}
+            <TouchableOpacity style={styles.approvedButton} onPress={() => navigation.navigate('TutorialsScreen')} >
               <View style={{ alignItems: 'center' }} >
                 <Text style={{ fontSize: 20, color: '#ffffff' }}>Submit</Text>
               </View>
